@@ -8,13 +8,10 @@
 
 import SwiftUI
 
-let ROWS = 8
-let COLUMNS = 8
-
 struct ContentView : View {
     var body: some View {
         Group{
-            ChessBoard()
+            ChessBoardView()
         }
     }
 }
