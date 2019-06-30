@@ -13,8 +13,10 @@ let COLUMNS = 8
 
 struct ContentView : View {
     var body: some View {
-        Group{
+        VStack{
+            StatsCard(player:2)
             ChessBoard()
+            StatsCard(player:1)
         }
     }
 }

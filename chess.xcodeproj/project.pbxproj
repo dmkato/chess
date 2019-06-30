@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35222FE022C940BA00F1C515 /* StatsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35222FDF22C940BA00F1C515 /* StatsCard.swift */; };
 		35587EA522C7EB5A00D4F7F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35587EA422C7EB5A00D4F7F3 /* AppDelegate.swift */; };
 		35587EA722C7EB5A00D4F7F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35587EA622C7EB5A00D4F7F3 /* SceneDelegate.swift */; };
 		35587EA922C7EB5A00D4F7F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35587EA822C7EB5A00D4F7F3 /* ContentView.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		35222FDF22C940BA00F1C515 /* StatsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCard.swift; sourceTree = "<group>"; };
 		35587EA122C7EB5A00D4F7F3 /* chess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chess.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35587EA422C7EB5A00D4F7F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35587EA622C7EB5A00D4F7F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				35FF28BB22C8064200527F02 /* ChessBoard.swift */,
 				35FF28B922C805F700527F02 /* BoardCell.swift */,
 				35FF28C122C818FE00527F02 /* ChessPiece.swift */,
+				35222FDF22C940BA00F1C515 /* StatsCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				35FF28C922C8747100527F02 /* Chessboard.swift in Sources */,
 				35FF28BA22C805F700527F02 /* BoardCell.swift in Sources */,
 				35587EA922C7EB5A00D4F7F3 /* ContentView.swift in Sources */,
+				35222FE022C940BA00F1C515 /* StatsCard.swift in Sources */,
 				35FF28CB22C8748700527F02 /* Cell.swift in Sources */,
 				35FF28BC22C8064200527F02 /* ChessBoard.swift in Sources */,
 				35FF28C222C818FE00527F02 /* ChessPiece.swift in Sources */,

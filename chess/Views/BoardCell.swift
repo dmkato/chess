@@ -10,7 +10,7 @@ import SwiftUI
 
 
 let getCellColor: (Int, Int) -> Color = { x, y in
-    x.isMultiple(of: 2) != y.isMultiple(of: 2) ? Color.init(white: 0.2) : Color.init(white: 0.95)
+    x.isMultiple(of: 2) != y.isMultiple(of: 2) ? Color.init(white: 0.2) : Color.init(white: 1)
 }
 
 struct BoardCell : View {

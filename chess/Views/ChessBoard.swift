@@ -31,7 +31,9 @@ struct ChessBoard : View {
                     height: UIScreen.main.bounds.width - 20,
                     alignment: .center)
             .cornerRadius(20)
-        }
+            .shadow(radius: 10)
+            
+        }.padding(40)
     }
 }
 

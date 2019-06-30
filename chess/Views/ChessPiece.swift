@@ -59,6 +59,7 @@ struct ChessPiece : View {
             Image(imageName)
                 .resizable()
                 .frame(width: width * 0.8, height: width * 0.8)
+                .shadow(radius: 7)
         }
     }
 }
