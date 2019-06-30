@@ -8,17 +8,6 @@
 
 import SwiftUI
 
-let chessPieceMap = [
-    "rook",
-    "knight",
-    "bishop",
-    "queen",
-    "king",
-    "bishop",
-    "knight",
-    "rook",
-]
-
 let getColor: (Int, Int) -> String? = { x, y in
     switch y {
     case 0, 1:
