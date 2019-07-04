@@ -19,7 +19,7 @@ let chessPieceMap: [ChessPieceType] = [
     .rook
 ]
 
-let getChessPieceColor: (Int, Int) -> ChessPieceColorType = { x, y in
+let getChessPieceColor: (Int, Int) -> ChessPieceColorType? = { x, y in
     switch y {
     case 0, 1:
         return .black
@@ -34,6 +34,13 @@ let getCellColorType: (Int, Int) -> CellColorType = { x, y in
     x.isMultiple(of: 2) != y.isMultiple(of: 2) ? .white : .black
 }
 
+let getImageName: (Int, Int) -> String? = { x, y in
+    if let color = getChessPieceColor(x, y), let piece = getChessPieceType(x, y) {
+        return "\(piece.rawValue)-\(color.rawValue)"
+    }
+    return nil
+}
+
 let getChessPiece: (Int, Int) -> ChessPieceModel? = { x, y in
     switch y {
     case 0, 7:
@@ -45,21 +52,15 @@ let getChessPiece: (Int, Int) -> ChessPieceModel? = { x, y in
     }
 }
 
-let getChessPieceType: (Int, Int) -> ChessPieceType = { x, y in
+let getChessPieceType: (Int, Int) -> ChessPieceType? = { x, y in
     switch y {
     case 0, 7:
         return chessPieceMap[x]
     case 1, 6:
         return .pawn
     default:
-        return .pawn
+        return nil
     }
-}
-
-let getImageName: (Int, Int) -> String = { x, y in
-    let color = getChessPieceColor(x, y)
-    let piece = getChessPieceType(x, y)
-    return "\(piece.rawValue)-\(color.rawValue)"
 }
 
 struct CellModel {

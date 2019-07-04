@@ -14,7 +14,7 @@ struct StatsCard : View {
         Group {
             ZStack(alignment: player == 2 ? .bottom : .top){
                 Rectangle()
-                    .frame(width: UIScreen.main.bounds.width - 20, height: 150, alignment: .center)
+                    .frame(width: UIScreen.main.bounds.width - 20, height: 300, alignment: .center)
                     .cornerRadius(20)
                     .shadow(radius: 10)
                     .foregroundColor(.white)
@@ -31,7 +31,7 @@ struct StatsCard : View {
 #if DEBUG
 struct StatsCard_Previews : PreviewProvider {
     static var previews: some View {
-        StatsCard(player: 2)
+        StatsCard(player: 1)
     }
 }
 #endif

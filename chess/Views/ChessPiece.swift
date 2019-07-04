@@ -19,28 +19,6 @@ let getColor: (Int, Int) -> String? = { x, y in
     }
 }
 
-let getChessPiece: (Int, Int) -> String? = { x, y in
-    switch y {
-    case 0, 7:
-        return chessPieceMap[x]
-    case 1, 6:
-        return "pawn"
-    default:
-        return nil
-    }
-}
-
-let getImageName: (Int, Int) -> String? = { x, y in
-    let color = getColor(x, y)
-    let piece = getChessPiece(x, y)
-    if ![color, piece].contains(nil) {
-        return "\(piece!)-\(color!)"
-    } else {
-        return nil
-    }
-}
-
-
 struct ChessPiece : View {
     let x: Int
     let y: Int

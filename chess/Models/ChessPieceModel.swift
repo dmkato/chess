@@ -9,7 +9,7 @@
 import Foundation
 
 struct ChessPieceModel {
-    var chessPieceColor: ChessPieceColorType
-    var imageName: String
+    var chessPieceColor: ChessPieceColorType?
+    var imageName: String?
     var chessPiece: ChessPieceType
 }
