@@ -13,19 +13,13 @@ let getCellWidth: (GeometryProxy) -> CGFloat = { geometry in
 }
     
 struct ChessBoard : View {
+    var chessBoardModel: ChessboardModel;
     var body: some View {
         Group {
             Group {
                 GeometryReader { geometry in
-                    VStack(alignment: .center) {
-                        ForEach((0..<ROWS)) { y in
-                            HStack(alignment: .center) {
-                                ForEach((0..<COLUMNS)) { x in
-                                    BoardCell(x: x, y: y, width: getCellWidth(geometry))
-                                }
-                            }
-                        }
-                    }
+                    BoardCells(cellWidth: getCellWidth(geometry), cells: self.chessBoardModel.cells)
+                    ChessPieces(cellWidth: getCellWidth(geometry), cells: [[self.chessBoardModel.chessPieces]])
                 }
             }.frame(width: UIScreen.main.bounds.width - 20,
                     height: UIScreen.main.bounds.width - 20,
@@ -40,7 +34,7 @@ struct ChessBoard : View {
 #if DEBUG
 struct ChessBoard_Previews : PreviewProvider {
     static var previews: some View {
-        ChessBoard()
+        ChessBoard(chessBoardModel: ChessboardModel())
     }
 }
 #endif

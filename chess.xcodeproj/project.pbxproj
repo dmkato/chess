@@ -15,6 +15,8 @@
 		35587EB122C7EB5D00D4F7F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35587EAF22C7EB5D00D4F7F3 /* LaunchScreen.storyboard */; };
 		35587EBC22C7EB5E00D4F7F3 /* chessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35587EBB22C7EB5E00D4F7F3 /* chessTests.swift */; };
 		35587EC722C7EB5E00D4F7F3 /* chessUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35587EC622C7EB5E00D4F7F3 /* chessUITests.swift */; };
+		355AD95722CE9B2A00677888 /* BoardCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355AD95622CE9B2A00677888 /* BoardCells.swift */; };
+		355AD95922CE9C6800677888 /* ChessPieces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355AD95822CE9C6800677888 /* ChessPieces.swift */; };
 		35E461FB22C94B7500A887DA /* ChessPieceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E461F822C94B7500A887DA /* ChessPieceType.swift */; };
 		35E461FC22C94B7500A887DA /* ChessPieceColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E461F922C94B7500A887DA /* ChessPieceColorType.swift */; };
 		35E461FD22C94B7500A887DA /* CellColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E461FA22C94B7500A887DA /* CellColorType.swift */; };
@@ -59,6 +61,8 @@
 		35587EC222C7EB5E00D4F7F3 /* chessUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chessUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35587EC622C7EB5E00D4F7F3 /* chessUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chessUITests.swift; sourceTree = "<group>"; };
 		35587EC822C7EB5E00D4F7F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		355AD95622CE9B2A00677888 /* BoardCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCells.swift; sourceTree = "<group>"; };
+		355AD95822CE9C6800677888 /* ChessPieces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessPieces.swift; sourceTree = "<group>"; };
 		35E461F822C94B7500A887DA /* ChessPieceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessPieceType.swift; sourceTree = "<group>"; };
 		35E461F922C94B7500A887DA /* ChessPieceColorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessPieceColorType.swift; sourceTree = "<group>"; };
 		35E461FA22C94B7500A887DA /* CellColorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellColorType.swift; sourceTree = "<group>"; };
@@ -184,7 +188,9 @@
 				35587EA822C7EB5A00D4F7F3 /* ContentView.swift */,
 				35FF28BB22C8064200527F02 /* ChessBoard.swift */,
 				35FF28B922C805F700527F02 /* BoardCell.swift */,
+				355AD95622CE9B2A00677888 /* BoardCells.swift */,
 				35FF28C122C818FE00527F02 /* ChessPiece.swift */,
+				355AD95822CE9C6800677888 /* ChessPieces.swift */,
 				35222FDF22C940BA00F1C515 /* StatsCard.swift */,
 			);
 			path = Views;
@@ -329,10 +335,12 @@
 				35FF28BA22C805F700527F02 /* BoardCell.swift in Sources */,
 				35587EA922C7EB5A00D4F7F3 /* ContentView.swift in Sources */,
 				35E4620322C94B8000A887DA /* ChessboardModel.swift in Sources */,
+				355AD95922CE9C6800677888 /* ChessPieces.swift in Sources */,
 				35E461FD22C94B7500A887DA /* CellColorType.swift in Sources */,
 				35E4620422C94B8000A887DA /* ChessPieceModel.swift in Sources */,
 				35222FE022C940BA00F1C515 /* StatsCard.swift in Sources */,
 				35FF28BC22C8064200527F02 /* ChessBoard.swift in Sources */,
+				355AD95722CE9B2A00677888 /* BoardCells.swift in Sources */,
 				35FF28C222C818FE00527F02 /* ChessPiece.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

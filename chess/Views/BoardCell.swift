@@ -9,23 +9,24 @@
 import SwiftUI
 
 
-let getCellColor: (Int, Int) -> Color = { x, y in
-    x.isMultiple(of: 2) != y.isMultiple(of: 2) ? Color.init(white: 0.2) : Color.init(white: 1)
+let getCellColor: (CellModel) -> Color = { cell in
+    switch cell.cellColor {
+    case .white:
+        return Color.init(white: 0.2)
+    case .black:
+        return Color.init(white: 1)
+    }
 }
 
 struct BoardCell : View {
-    var x: Int
-    var y: Int
+    var cell: CellModel
     var width: CGFloat
-    @State var tapped: Bool = false
     
     var body: some View {
-        ZStack{
-            Rectangle()
-                .frame(width: width, height: width, alignment: .center)
-                .foregroundColor(getCellColor(x, y)).padding(-4)
-            ChessPiece(x: x, y: y, width: width)
-        }
+        Rectangle()
+            .frame(width: width, height: width, alignment: .center)
+            .foregroundColor(getCellColor(cell))
+            .padding(-4)
     }
 }
 
@@ -34,12 +35,12 @@ struct BoardCell_Previews : PreviewProvider {
     static var previews: some View {
         VStack {
             HStack {
-                BoardCell(x: 0, y: 0, width: CGFloat(200))
-                BoardCell(x: 1, y: 0, width: CGFloat(200))
+                BoardCell(cell: CellModel(x: 0, y: 0), width: CGFloat(200))
+                BoardCell(cell: CellModel(x: 1, y: 0), width: CGFloat(200))
             }
             HStack {
-                BoardCell(x: 0, y: 1, width: CGFloat(200))
-                BoardCell(x: 1, y: 1, width: CGFloat(200))
+                BoardCell(cell: CellModel(x: 0, y: 1), width: CGFloat(200))
+                BoardCell(cell: CellModel(x: 1, y: 1), width: CGFloat(200))
             }
         }
     }

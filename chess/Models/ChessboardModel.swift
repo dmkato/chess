@@ -11,21 +11,35 @@ import Foundation
 let ROWS = 8
 let COLUMNS = 8
 
-
-
-let createCells: () -> [[CellModel]] = {
-    Array(0..<ROWS).map { x in
-        Array(0..<COLUMNS).map { y in
-            CellModel(x: x, y: y)
+let createCells: ([ChessPieceModel]) -> [[CellModel]] = { (chessPieces: [ChessPieceModel]) in
+    Array(0..<ROWS).map { y in
+        Array(0..<COLUMNS).map { x in
+            var chessPiece: ChessPieceModel? = chessPieces[0]
+                CellModel(x: x, y: y, chessPiece: chessPiece)
         }
     }
 }
 
-struct ChessboardModel {
+let createChessPieces: () -> [ChessPieceModel] = {
+    Array(0..<ROWS).flatMap { y in
+        Array(0..<COLUMNS).map { x in
+            ChessPieceModel(x: x, y: y)
+        }
+    }
+}
+
+struct ChessboardModel: Hashable {
+    static func == (lhs: ChessboardModel, rhs: ChessboardModel) -> Bool {
+        lhs.cells == rhs.cells
+            && lhs.chessPieces == rhs.chessPieces
+    }
+    
     let cells: [[CellModel]]
+    let chessPieces: [ChessPieceModel]
     
     init() {
-        self.cells = createCells()
+        self.chessPieces = createChessPieces()
+        self.cells = createCells(self.chessPieces)
     }
     
 }

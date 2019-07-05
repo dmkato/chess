@@ -20,24 +20,17 @@ let getColor: (Int, Int) -> String? = { x, y in
 }
 
 struct ChessPiece : View {
-    let x: Int
-    let y: Int
-    let imageName: String?
+    let chessPiece: ChessPieceModel?
     let width: CGFloat
     
-    init(x: Int, y: Int, width: CGFloat) {
-        self.x = x
-        self.y = y
-        self.width = width
-        self.imageName = getImageName(x, y)
-    }
-    
     var body: some View {
-        imageName.map { imageName in
-            Image(imageName)
-                .resizable()
-                .frame(width: width * 0.8, height: width * 0.8)
-                .shadow(radius: 7)
+        Group {
+            if (chessPiece?.imageName != nil) {
+                Image(chessPiece!.imageName!)
+                    .resizable()
+                    .frame(width: width * 0.8, height: width * 0.8)
+                    .shadow(radius: 7)
+            }
         }
     }
 }
@@ -46,8 +39,8 @@ struct ChessPiece : View {
 struct ChessPiece_Previews : PreviewProvider {
     static var previews: some View {
         HStack {
-            ChessPiece(x: 0, y: 0, width: CGFloat(200))
-            ChessPiece(x: 3, y: 3, width: CGFloat(200))
+            ChessPiece(chessPiece: ChessPieceModel(x: 0, y: 0, chessPieceColor: .black, imageName: "pawn-white", chessPiece: .pawn), width: CGFloat(200))
+            ChessPiece(chessPiece: ChessPieceModel(x: 1, y: 0, chessPieceColor: .white, imageName: "queen-black", chessPiece: .queen), width: CGFloat(200))
         }
     }
 }

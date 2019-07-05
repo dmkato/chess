@@ -9,10 +9,11 @@
 import SwiftUI
 
 struct ContentView : View {
+    var chessBoardModel = ChessboardModel()
     var body: some View {
         VStack{
             StatsCard(player:2)
-            ChessBoard()
+            ChessBoard(chessBoardModel: chessBoardModel)
             StatsCard(player:1)
         }
     }
