@@ -27,7 +27,12 @@ struct BoardCells : View {
 #if DEBUG
 struct BoardCells_Previews : PreviewProvider {
     static var previews: some View {
-        BoardCells(cellWidth: CGFloat(20), cells: [[CellModel(x: 0, y: 0, chessPiece: <#ChessPieceModel?#>)]])
+        BoardCells(cellWidth: CGFloat(200), cells: [[
+            CellModel(x: 0, y: 1, chessPiece: nil),
+            CellModel(x: 0, y: 0, chessPiece: nil),
+            CellModel(x: 0, y: 1, chessPiece: nil),
+            CellModel(x: 1, y: 1, chessPiece: nil)
+        ]])
     }
 }
 #endif

@@ -10,13 +10,16 @@ import SwiftUI
 
 struct ChessPieces : View {
     var cellWidth: CGFloat
-    var chessPieces: [[ChessPieces]]
+    var chessPieces: [ChessPieceModel]
+    
     var body: some View {
         VStack(alignment: .center) {
-            ForEach(self.cells.identified(by: \.self)) { rows in
+            ForEach(0..<COLUMNS) { y in
                 HStack(alignment: .center) {
-                    ForEach(rows.identified(by: \.self)) { cell in
-                        ChessPiece(chessPiece: <#T##ChessPieceModel?#>, width: <#T##CGFloat#>)
+                    ForEach(0..<ROWS) { x in
+                        ChessPiece(chessPiece: self.chessPieces.first { chessPiece in
+                            chessPiece.x == x && chessPiece.y == y
+                        }, width: self.cellWidth)
                     }
                 }
             }
@@ -27,7 +30,7 @@ struct ChessPieces : View {
 #if DEBUG
 struct ChessPieces_Previews : PreviewProvider {
     static var previews: some View {
-        ChessPieces(cellWidth: CGFloat(20), cells: [[CellModel(x: 1, y: 1)]])
+        ChessPieces(cellWidth: CGFloat(200), chessPieces: [ChessPieceModel(x: 0, y: 0), ChessPieceModel(x: 1, y: 0)])
     }
 }
 #endif

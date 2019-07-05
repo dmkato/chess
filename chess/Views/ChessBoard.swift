@@ -18,8 +18,10 @@ struct ChessBoard : View {
         Group {
             Group {
                 GeometryReader { geometry in
-                    BoardCells(cellWidth: getCellWidth(geometry), cells: self.chessBoardModel.cells)
-                    ChessPieces(cellWidth: getCellWidth(geometry), cells: [[self.chessBoardModel.chessPieces]])
+                    ZStack {
+                        BoardCells(cellWidth: getCellWidth(geometry), cells: self.chessBoardModel.cells)
+                        ChessPieces(cellWidth: getCellWidth(geometry), chessPieces: self.chessBoardModel.chessPieces)
+                    }
                 }
             }.frame(width: UIScreen.main.bounds.width - 20,
                     height: UIScreen.main.bounds.width - 20,

@@ -14,8 +14,10 @@ let COLUMNS = 8
 let createCells: ([ChessPieceModel]) -> [[CellModel]] = { (chessPieces: [ChessPieceModel]) in
     Array(0..<ROWS).map { y in
         Array(0..<COLUMNS).map { x in
-            var chessPiece: ChessPieceModel? = chessPieces[0]
-                CellModel(x: x, y: y, chessPiece: chessPiece)
+            var chessPiece: ChessPieceModel? = chessPieces.first {chessPiece in
+                chessPiece.x == x && chessPiece.y == y
+            }
+            return CellModel(x: x, y: y, chessPiece: chessPiece)
         }
     }
 }
