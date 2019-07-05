@@ -20,6 +20,11 @@ struct ChessPieces : View {
                         ChessPiece(chessPiece: self.chessPieces.first { chessPiece in
                             chessPiece.x == x && chessPiece.y == y
                         }, width: self.cellWidth)
+                            .tapAction {
+                                self.chessPieces.first { chessPiece in
+                                    chessPiece.x == x && chessPiece.y == y
+                                }.selected
+                            }
                     }
                 }
             }
