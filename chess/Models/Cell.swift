@@ -1,5 +1,5 @@
 //
-//  CellModel.swift
+//  Cell.swift
 //  chess
 //
 //  Created by Daniel Kato on 6/29/19.
@@ -8,26 +8,31 @@
 
 import Foundation
 
-let getCellColorType: (Int, Int) -> CellColorType = { x, y in
+enum CellColor: String {
+    case black = "black"
+    case white = "white"
+}
+
+let getCellColor: (Int, Int) -> CellColor = { x, y in
     x.isMultiple(of: 2) != y.isMultiple(of: 2) ? .white : .black
 }
 
 
-struct CellModel: Hashable{
-    static func == (lhs: CellModel, rhs: CellModel) -> Bool {
+struct Cell: Hashable{
+    static func == (lhs: Cell, rhs: Cell) -> Bool {
         lhs.chessPiece == rhs.chessPiece
-            && lhs.cellColor == rhs.cellColor
+            && lhs.color == rhs.color
             && lhs.x == rhs.x
             && lhs.y == rhs.y
     }
     
     var x: Int
     var y: Int
-    var cellColor: CellColorType
-    var chessPiece: ChessPieceModel?
+    var color: CellColor
+    var chessPiece: ChessPiece?
     
-    init(x: Int, y: Int, chessPiece: ChessPieceModel?) {
-        self.cellColor = getCellColorType(x, y)
+    init(x: Int, y: Int, chessPiece: ChessPiece?) {
+        self.color = getCellColor(x, y)
         self.chessPiece = chessPiece
         self.x = x
         self.y = y

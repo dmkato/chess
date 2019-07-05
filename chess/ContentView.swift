@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct ContentView : View {
-    var chessBoardModel = ChessboardModel()
+    var chessBoard = ChessBoard()
     var body: some View {
         VStack{
-            StatsCard(player:2)
-            ChessBoard(chessBoardModel: chessBoardModel)
-            StatsCard(player:1)
+            StatsCardView(player:2)
+            ChessBoardView(ChessBoard: chessBoard)
+            StatsCardView(player:1)
         }
     }
 }

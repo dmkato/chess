@@ -1,5 +1,5 @@
 //
-//  StatsCard.swift
+//  StatsCardView.swift
 //  chess
 //
 //  Created by Daniel Kato on 6/30/19.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct StatsCard : View {
+struct StatsCardView: View {
     var player: Int
     var body: some View {
         Group {
@@ -29,9 +29,9 @@ struct StatsCard : View {
 }
 
 #if DEBUG
-struct StatsCard_Previews : PreviewProvider {
+struct StatsCardView_Previews : PreviewProvider {
     static var previews: some View {
-        StatsCard(player: 1)
+        StatsCardView(player: 1)
     }
 }
 #endif

@@ -1,5 +1,5 @@
 //
-//  ChessPiece.swift
+//  ChessPieceView.swift
 //  chess
 //
 //  Created by Daniel Kato on 6/29/19.
@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct ChessPiece : View {
-    let chessPiece: ChessPieceModel?
+struct ChessPieceView: View {
+    let chessPiece: ChessPiece?
     let width: CGFloat
     
     var body: some View {
@@ -25,11 +25,11 @@ struct ChessPiece : View {
 }
 
 #if DEBUG
-struct ChessPiece_Previews : PreviewProvider {
+struct ChessPieceView_Previews : PreviewProvider {
     static var previews: some View {
         HStack {
-            ChessPiece(chessPiece: ChessPieceModel(x: 0, y: 0), width: CGFloat(200))
-            ChessPiece(chessPiece: ChessPieceModel(x: 0, y: 1), width: CGFloat(200))
+            ChessPieceView(chessPiece: ChessPiece(x: 0, y: 0), width: CGFloat(200))
+            ChessPieceView(chessPiece: ChessPiece(x: 0, y: 1), width: CGFloat(200))
         }
     }
 }

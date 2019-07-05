@@ -1,5 +1,5 @@
 //
-//  ChessboardModel.swift
+//  ChessBoard.swift
 //  chess
 //
 //  Created by Daniel Kato on 6/29/19.
@@ -11,33 +11,33 @@ import Foundation
 let ROWS = 8
 let COLUMNS = 8
 
-let createCells: ([ChessPieceModel]) -> [[CellModel]] = { (chessPieces: [ChessPieceModel]) in
+let createCells: ([ChessPiece]) -> [[Cell]] = { (chessPieces: [ChessPiece]) in
     Array(0..<ROWS).map { y in
         Array(0..<COLUMNS).map { x in
-            var chessPiece: ChessPieceModel? = chessPieces.first {chessPiece in
+            var chessPiece: ChessPiece? = chessPieces.first {chessPiece in
                 chessPiece.x == x && chessPiece.y == y
             }
-            return CellModel(x: x, y: y, chessPiece: chessPiece)
+            return Cell(x: x, y: y, chessPiece: chessPiece)
         }
     }
 }
 
-let createChessPieces: () -> [ChessPieceModel] = {
+let createChessPieces: () -> [ChessPiece] = {
     Array(0..<ROWS).flatMap { y in
         Array(0..<COLUMNS).map { x in
-            ChessPieceModel(x: x, y: y)
+            ChessPiece(x: x, y: y)
         }
     }
 }
 
-struct ChessboardModel: Hashable {
-    static func == (lhs: ChessboardModel, rhs: ChessboardModel) -> Bool {
+struct ChessBoard: Hashable {
+    static func == (lhs: ChessBoard, rhs: ChessBoard) -> Bool {
         lhs.cells == rhs.cells
             && lhs.chessPieces == rhs.chessPieces
     }
     
-    let cells: [[CellModel]]
-    let chessPieces: [ChessPieceModel]
+    let cells: [[Cell]]
+    let chessPieces: [ChessPiece]
     
     init() {
         self.chessPieces = createChessPieces()

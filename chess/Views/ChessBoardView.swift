@@ -1,5 +1,5 @@
 //
-//  ChessBoard.swift
+//  ChessBoardView.swift
 //  chess
 //
 //  Created by Daniel Kato on 6/29/19.
@@ -12,15 +12,15 @@ let getCellWidth: (GeometryProxy) -> CGFloat = { geometry in
     geometry.size.width / CGFloat(ROWS)
 }
     
-struct ChessBoard : View {
-    var chessBoardModel: ChessboardModel;
+struct ChessBoardView : View {
+    var ChessBoard: ChessBoard;
     var body: some View {
         Group {
             Group {
                 GeometryReader { geometry in
                     ZStack {
-                        BoardCells(cellWidth: getCellWidth(geometry), cells: self.chessBoardModel.cells)
-                        ChessPieces(cellWidth: getCellWidth(geometry), chessPieces: self.chessBoardModel.chessPieces)
+                        BoardCellsView(cellWidth: getCellWidth(geometry), cells: self.ChessBoard.cells)
+                        ChessPiecesView(cellWidth: getCellWidth(geometry), chessPieces: self.ChessBoard.chessPieces)
                     }
                 }
             }.frame(width: UIScreen.main.bounds.width - 20,
@@ -34,9 +34,9 @@ struct ChessBoard : View {
 }
 
 #if DEBUG
-struct ChessBoard_Previews : PreviewProvider {
+struct ChessBoardView_Previews : PreviewProvider {
     static var previews: some View {
-        ChessBoard(chessBoardModel: ChessboardModel())
+        ChessBoardView(ChessBoard: ChessBoard())
     }
 }
 #endif

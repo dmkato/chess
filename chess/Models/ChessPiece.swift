@@ -1,5 +1,5 @@
 //
-//  ChessPieceModel.swift
+//  ChessPiece.swift
 //  chess
 //
 //  Created by Daniel Kato on 6/29/19.
@@ -7,6 +7,23 @@
 //
 
 import Foundation
+
+enum ChessPieceType: String {
+    case rook = "rook"
+    case knight = "knight"
+    case bishop = "bishop"
+    case queen = "queen"
+    case king = "king"
+    case pawn = "pawn"
+    
+}
+
+enum ChessPieceColorType: String {
+    case black = "black"
+    case white = "white"
+}
+
+
 
 let chessPieceMap: [ChessPieceType] = [
     .rook,
@@ -59,7 +76,7 @@ let getChessPieceType: (Int, Int) -> ChessPieceType? = { x, y in
     }
 }
 
-struct ChessPieceModel: Hashable {
+struct ChessPiece: Hashable {
     var x: Int
     var y: Int
     var chessPieceColor: ChessPieceColorType?

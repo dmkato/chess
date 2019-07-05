@@ -8,15 +8,15 @@
 
 import SwiftUI
 
-struct BoardCells : View {
+struct BoardCellsView: View {
     var cellWidth: CGFloat
-    var cells: [[CellModel]]
+    var cells: [[Cell]]
     var body: some View {
         VStack(alignment: .center) {
             ForEach(self.cells.identified(by: \.self)) { rows in
                 HStack(alignment: .center) {
                     ForEach(rows.identified(by: \.self)) { cell in
-                        BoardCell(cell: cell, width: self.cellWidth)
+                        BoardCellView(cell: cell, width: self.cellWidth)
                     }
                 }
             }
@@ -25,13 +25,13 @@ struct BoardCells : View {
 }
 
 #if DEBUG
-struct BoardCells_Previews : PreviewProvider {
+struct BoardCellsView_Previews : PreviewProvider {
     static var previews: some View {
-        BoardCells(cellWidth: CGFloat(200), cells: [[
-            CellModel(x: 0, y: 1, chessPiece: nil),
-            CellModel(x: 0, y: 0, chessPiece: nil),
-            CellModel(x: 0, y: 1, chessPiece: nil),
-            CellModel(x: 1, y: 1, chessPiece: nil)
+        BoardCellsView(cellWidth: CGFloat(200), cells: [[
+            Cell(x: 0, y: 1, chessPiece: nil),
+            Cell(x: 0, y: 0, chessPiece: nil),
+            Cell(x: 0, y: 1, chessPiece: nil),
+            Cell(x: 1, y: 1, chessPiece: nil)
         ]])
     }
 }
