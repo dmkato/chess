@@ -9,21 +9,18 @@
 import Foundation
 
 enum ChessPieceType: String {
-    case rook = "rook"
-    case knight = "knight"
-    case bishop = "bishop"
-    case queen = "queen"
-    case king = "king"
-    case pawn = "pawn"
-    
+    case rook
+    case knight
+    case bishop
+    case queen
+    case king
+    case pawn
 }
 
 enum ChessPieceColorType: String {
-    case black = "black"
-    case white = "white"
+    case black
+    case white
 }
-
-
 
 let chessPieceMap: [ChessPieceType] = [
     .rook,
@@ -33,10 +30,10 @@ let chessPieceMap: [ChessPieceType] = [
     .king,
     .bishop,
     .knight,
-    .rook
+    .rook,
 ]
 
-let getChessPieceColor: (Int, Int) -> ChessPieceColorType? = { x, y in
+let getChessPieceColor: (Int, Int) -> ChessPieceColorType? = { _, y in
     switch y {
     case 0, 1:
         return .black
@@ -59,7 +56,7 @@ let getChessPiece: (Int, Int) -> ChessPieceType? = { x, y in
     case 0, 7:
         return chessPieceMap[x]
     case 1, 6:
-        return  .pawn
+        return .pawn
     default:
         return nil
     }
@@ -83,22 +80,21 @@ struct ChessPiece: Hashable {
     var imageName: String?
     var chessPiece: ChessPieceType?
     var selected: Bool
-    
+
     init(x: Int, y: Int) {
         self.x = x
         self.y = y
-        self.chessPieceColor = getChessPieceColor(x, y)
-        self.imageName = getImageName(x, y)
-        self.chessPiece = getChessPiece(x, y)
-        self.selected = false
+        chessPieceColor = getChessPieceColor(x, y)
+        imageName = getImageName(x, y)
+        chessPiece = getChessPiece(x, y)
+        selected = false
     }
-    
+
     mutating func setSelected() {
-        self.selected = true
+        selected = true
     }
-    
+
     mutating func setUnselected() {
-        self.selected = false
+        selected = false
     }
-    
 }

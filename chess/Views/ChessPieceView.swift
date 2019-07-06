@@ -16,10 +16,10 @@ struct ChessPieceView: View {
     @State var border: Color = .clear
     let chessPiece: ChessPiece?
     let width: CGFloat
-    
+
     var body: some View {
         Group {
-            if (chessPiece?.imageName != nil) {
+            if chessPiece?.imageName != nil {
                 Image(chessPiece!.imageName!)
                     .resizable()
                     .frame(width: getWidth(width), height: getWidth(width))
@@ -35,12 +35,12 @@ struct ChessPieceView: View {
 }
 
 #if DEBUG
-struct ChessPieceView_Previews : PreviewProvider {
-    static var previews: some View {
-        HStack {
-            ChessPieceView(chessPiece: ChessPiece(x: 0, y: 0), width: CGFloat(200))
-            ChessPieceView(chessPiece: ChessPiece(x: 2, y: 2), width: CGFloat(200))
+    struct ChessPieceView_Previews: PreviewProvider {
+        static var previews: some View {
+            HStack {
+                ChessPieceView(chessPiece: ChessPiece(x: 0, y: 0), width: CGFloat(200))
+                ChessPieceView(chessPiece: ChessPiece(x: 2, y: 2), width: CGFloat(200))
+            }
         }
     }
-}
 #endif

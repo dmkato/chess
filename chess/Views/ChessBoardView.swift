@@ -11,9 +11,9 @@ import SwiftUI
 let getCellWidth: (GeometryProxy) -> CGFloat = { geometry in
     geometry.size.width / CGFloat(ROWS)
 }
-    
-struct ChessBoardView : View {
-    var chessBoard: ChessBoard;
+
+struct ChessBoardView: View {
+    var chessBoard: ChessBoard
     var body: some View {
         Group {
             Group {
@@ -26,17 +26,17 @@ struct ChessBoardView : View {
             }.frame(width: UIScreen.main.bounds.width - 20,
                     height: UIScreen.main.bounds.width - 20,
                     alignment: .center)
-            .cornerRadius(20)
-            .shadow(radius: 10)
-            
+                .cornerRadius(20)
+                .shadow(radius: 10)
+
         }.padding(40)
     }
 }
 
 #if DEBUG
-struct ChessBoardView_Previews : PreviewProvider {
-    static var previews: some View {
-        ChessBoardView(chessBoard: ChessBoard())
+    struct ChessBoardView_Previews: PreviewProvider {
+        static var previews: some View {
+            ChessBoardView(chessBoard: ChessBoard())
+        }
     }
-}
 #endif

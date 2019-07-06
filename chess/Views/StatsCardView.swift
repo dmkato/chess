@@ -12,16 +12,16 @@ struct StatsCardView: View {
     var player: Int
     var body: some View {
         Group {
-            ZStack(alignment: player == 2 ? .bottom : .top){
+            ZStack(alignment: player == 2 ? .bottom : .top) {
                 Rectangle()
                     .frame(width: UIScreen.main.bounds.width - 20, height: 300, alignment: .center)
                     .cornerRadius(20)
                     .shadow(radius: 10)
                     .foregroundColor(.white)
-                HStack{
+                HStack {
                     Text("Player \(player)")
                         .font(.title)
-                    .rotationEffect(.degrees(player == 2 ? 180 : 0))
+                        .rotationEffect(.degrees(player == 2 ? 180 : 0))
                 }.padding()
             }
         }
@@ -29,9 +29,9 @@ struct StatsCardView: View {
 }
 
 #if DEBUG
-struct StatsCardView_Previews : PreviewProvider {
-    static var previews: some View {
-        StatsCardView(player: 1)
+    struct StatsCardView_Previews: PreviewProvider {
+        static var previews: some View {
+            StatsCardView(player: 1)
+        }
     }
-}
 #endif

@@ -6,17 +6,17 @@
 //  Copyright © 2019 Daniel Kato. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 import SwiftUI
 
 let ROWS = 8
 let COLUMNS = 8
 
 let createCells: ([ChessPiece]) -> [[Cell]] = { (chessPieces: [ChessPiece]) in
-    Array(0..<ROWS).map { y in
-        Array(0..<COLUMNS).map { x in
-            var chessPiece: ChessPiece? = chessPieces.first {chessPiece in
+    Array(0 ..< ROWS).map { y in
+        Array(0 ..< COLUMNS).map { x in
+            var chessPiece: ChessPiece? = chessPieces.first { chessPiece in
                 chessPiece.x == x && chessPiece.y == y
             }
             return Cell(x: x, y: y, chessPiece: chessPiece)
@@ -25,8 +25,8 @@ let createCells: ([ChessPiece]) -> [[Cell]] = { (chessPieces: [ChessPiece]) in
 }
 
 let createChessPieces: () -> [ChessPiece] = {
-    Array(0..<ROWS).flatMap { y in
-        Array(0..<COLUMNS).map { x in
+    Array(0 ..< ROWS).flatMap { y in
+        Array(0 ..< COLUMNS).map { x in
             ChessPiece(x: x, y: y)
         }
     }
@@ -39,13 +39,12 @@ struct ChessBoard: Hashable {
 //    }
 //
 //    let didChange = PassthroughSubject<ChessBoard, Never>()
-    
+
     let cells: [[Cell]]
     let chessPieces: [ChessPiece]
-    
+
     init() {
-        self.chessPieces = createChessPieces()
-        self.cells = createCells(self.chessPieces)
+        chessPieces = createChessPieces()
+        cells = createCells(chessPieces)
     }
-    
 }

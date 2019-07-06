@@ -8,26 +8,24 @@
 
 import SwiftUI
 
-struct ContentView : View {
+struct ContentView: View {
 //    @EnvironmentObject var chessBoard
     var body: some View {
-        VStack{
-            StatsCardView(player:2)
+        VStack {
+            StatsCardView(player: 2)
 //            ChessBoardView()
 //                .environmentObject(self.chessBoard)
-            StatsCardView(player:1)
+            StatsCardView(player: 1)
         }
     }
-    
-    func setSelectedPiece() {
-        
-    }
+
+    func setSelectedPiece() {}
 }
 
 #if DEBUG
-struct ContentView_Previews : PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
-}
 #endif

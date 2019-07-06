@@ -25,14 +25,14 @@ struct BoardCellsView: View {
 }
 
 #if DEBUG
-struct BoardCellsView_Previews : PreviewProvider {
-    static var previews: some View {
-        BoardCellsView(cellWidth: CGFloat(200), cells: [[
-            Cell(x: 0, y: 1, chessPiece: nil),
-            Cell(x: 0, y: 0, chessPiece: nil),
-            Cell(x: 0, y: 1, chessPiece: nil),
-            Cell(x: 1, y: 1, chessPiece: nil)
-        ]])
+    struct BoardCellsView_Previews: PreviewProvider {
+        static var previews: some View {
+            BoardCellsView(cellWidth: CGFloat(200), cells: [[
+                Cell(x: 0, y: 1, chessPiece: nil),
+                Cell(x: 0, y: 0, chessPiece: nil),
+                Cell(x: 0, y: 1, chessPiece: nil),
+                Cell(x: 1, y: 1, chessPiece: nil),
+            ]])
+        }
     }
-}
 #endif
