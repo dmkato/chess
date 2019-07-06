@@ -9,13 +9,18 @@
 import SwiftUI
 
 struct ContentView : View {
-    var chessBoard = ChessBoard()
+//    @EnvironmentObject var chessBoard
     var body: some View {
         VStack{
             StatsCardView(player:2)
-            ChessBoardView(ChessBoard: chessBoard)
+//            ChessBoardView()
+//                .environmentObject(self.chessBoard)
             StatsCardView(player:1)
         }
+    }
+    
+    func setSelectedPiece() {
+        
     }
 }
 

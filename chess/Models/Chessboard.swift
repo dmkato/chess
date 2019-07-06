@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Combine
+import SwiftUI
 
 let ROWS = 8
 let COLUMNS = 8
@@ -31,10 +33,12 @@ let createChessPieces: () -> [ChessPiece] = {
 }
 
 struct ChessBoard: Hashable {
-    static func == (lhs: ChessBoard, rhs: ChessBoard) -> Bool {
-        lhs.cells == rhs.cells
-            && lhs.chessPieces == rhs.chessPieces
-    }
+//    static func == (lhs: ChessBoard, rhs: ChessBoard) -> Bool {
+//        lhs.cells == rhs.cells
+//            && lhs.chessPieces == rhs.chessPieces
+//    }
+//
+//    let didChange = PassthroughSubject<ChessBoard, Never>()
     
     let cells: [[Cell]]
     let chessPieces: [ChessPiece]

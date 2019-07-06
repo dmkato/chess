@@ -8,7 +8,12 @@
 
 import SwiftUI
 
+let getWidth: (CGFloat) -> CGFloat = { width in
+    width * 0.91
+}
+
 struct ChessPieceView: View {
+    @State var border: Color = .clear
     let chessPiece: ChessPiece?
     let width: CGFloat
     
@@ -17,10 +22,15 @@ struct ChessPieceView: View {
             if (chessPiece?.imageName != nil) {
                 Image(chessPiece!.imageName!)
                     .resizable()
-                    .frame(width: width * 0.8, height: width * 0.8)
+                    .frame(width: getWidth(width), height: getWidth(width))
+                    .border(self.border, width: 5)
                     .shadow(radius: 7)
+            } else {
+                Rectangle()
+                    .frame(width: getWidth(width), height: getWidth(width))
+                    .foregroundColor(.clear)
             }
-        }.frame(width: width * 0.8, height: width * 0.8)
+        }
     }
 }
 
@@ -29,7 +39,7 @@ struct ChessPieceView_Previews : PreviewProvider {
     static var previews: some View {
         HStack {
             ChessPieceView(chessPiece: ChessPiece(x: 0, y: 0), width: CGFloat(200))
-            ChessPieceView(chessPiece: ChessPiece(x: 0, y: 1), width: CGFloat(200))
+            ChessPieceView(chessPiece: ChessPiece(x: 2, y: 2), width: CGFloat(200))
         }
     }
 }

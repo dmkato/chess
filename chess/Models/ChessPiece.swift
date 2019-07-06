@@ -82,6 +82,7 @@ struct ChessPiece: Hashable {
     var chessPieceColor: ChessPieceColorType?
     var imageName: String?
     var chessPiece: ChessPieceType?
+    var selected: Bool
     
     init(x: Int, y: Int) {
         self.x = x
@@ -89,5 +90,15 @@ struct ChessPiece: Hashable {
         self.chessPieceColor = getChessPieceColor(x, y)
         self.imageName = getImageName(x, y)
         self.chessPiece = getChessPiece(x, y)
+        self.selected = false
     }
+    
+    mutating func setSelected() {
+        self.selected = true
+    }
+    
+    mutating func setUnselected() {
+        self.selected = false
+    }
+    
 }
