@@ -13,23 +13,27 @@ import SwiftUI
 let ROWS = 8
 let COLUMNS = 8
 
-let createCells: ([ChessPiece]) -> [[Cell]] = { (chessPieces: [ChessPiece]) in
+let createCells: ([[Int]: ChessPiece]) -> [[Cell]] = { chessPieces in
     Array(0 ..< ROWS).map { y in
         Array(0 ..< COLUMNS).map { x in
-            var chessPiece: ChessPiece? = chessPieces.first { chessPiece in
-                chessPiece.x == x && chessPiece.y == y
-            }
+            var chessPiece: ChessPiece? = chessPieces[[x, y]]
             return Cell(x: x, y: y, chessPiece: chessPiece)
         }
     }
 }
 
-let createChessPieces: () -> [ChessPiece] = {
-    Array(0 ..< ROWS).flatMap { y in
-        Array(0 ..< COLUMNS).map { x in
-            ChessPiece(x: x, y: y)
+let createChessPieces: () -> [[Int]: ChessPiece] = {
+    Array(0 ..< ROWS)
+        .flatMap { y in
+            Array(0 ..< COLUMNS).map { x in
+                ChessPiece(x: x, y: y)
+            }
         }
-    }
+        .reduce([[Int]: ChessPiece]()) { (dict, chessPiece) in
+            var dict = dict
+            dict[[chessPiece.x, chessPiece.y]] = chessPiece
+            return dict
+        }
 }
 
 class ChessBoard: BindableObject {
@@ -41,7 +45,7 @@ class ChessBoard: BindableObject {
         }
     }
     
-    var chessPieces: [ChessPiece] {
+    var chessPieces: [[Int]: ChessPiece] {
         didSet {
             didChange.send(())
         }
@@ -49,6 +53,6 @@ class ChessBoard: BindableObject {
 
     init() {
         self.chessPieces = createChessPieces()
-        self.cells = createCells(chessPieces)
+        self.cells = createCells(self.chessPieces)
     }
 }
