@@ -20,7 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: ContentView())
+            let chessBoard = ChessBoard()
+            window.rootViewController = UIHostingController(rootView: ContentView()
+                .environmentObject(chessBoard))
             self.window = window
             window.makeKeyAndVisible()
         }

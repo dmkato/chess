@@ -32,19 +32,23 @@ let createChessPieces: () -> [ChessPiece] = {
     }
 }
 
-struct ChessBoard: Hashable {
-//    static func == (lhs: ChessBoard, rhs: ChessBoard) -> Bool {
-//        lhs.cells == rhs.cells
-//            && lhs.chessPieces == rhs.chessPieces
-//    }
-//
-//    let didChange = PassthroughSubject<ChessBoard, Never>()
+class ChessBoard: BindableObject {
+    var didChange = PassthroughSubject<Void, Never>()
 
-    let cells: [[Cell]]
-    let chessPieces: [ChessPiece]
+    var cells: [[Cell]] {
+        didSet {
+            didChange.send(())
+        }
+    }
+    
+    var chessPieces: [ChessPiece] {
+        didSet {
+            didChange.send(())
+        }
+    }
 
     init() {
-        chessPieces = createChessPieces()
-        cells = createCells(chessPieces)
+        self.chessPieces = createChessPieces()
+        self.cells = createCells(chessPieces)
     }
 }

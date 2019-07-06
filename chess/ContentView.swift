@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct ContentView: View {
-//    @EnvironmentObject var chessBoard
+    @EnvironmentObject var chessBoard: ChessBoard
     var body: some View {
         VStack {
             StatsCardView(player: 2)
-//            ChessBoardView()
-//                .environmentObject(self.chessBoard)
+            ChessBoardView()
+                .environmentObject(self.chessBoard)
             StatsCardView(player: 1)
         }
     }
@@ -26,6 +26,7 @@ struct ContentView: View {
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
             ContentView()
+                .environmentObject(ChessBoard())
         }
     }
 #endif

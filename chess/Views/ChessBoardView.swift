@@ -13,14 +13,15 @@ let getCellWidth: (GeometryProxy) -> CGFloat = { geometry in
 }
 
 struct ChessBoardView: View {
-    var chessBoard: ChessBoard
+    @EnvironmentObject var chessBoard: ChessBoard
     var body: some View {
         Group {
             Group {
                 GeometryReader { geometry in
                     ZStack {
                         BoardCellsView(cellWidth: getCellWidth(geometry), cells: self.chessBoard.cells)
-                        ChessPiecesView(chessBoard: self.chessBoard, cellWidth: getCellWidth(geometry))
+                        ChessPiecesView(cellWidth: getCellWidth(geometry))
+                            .environmentObject(self.chessBoard)
                     }
                 }
             }.frame(width: UIScreen.main.bounds.width - 20,
@@ -36,7 +37,8 @@ struct ChessBoardView: View {
 #if DEBUG
     struct ChessBoardView_Previews: PreviewProvider {
         static var previews: some View {
-            ChessBoardView(chessBoard: ChessBoard())
+            ChessBoardView()
+                .environmentObject(ChessBoard())
         }
     }
 #endif

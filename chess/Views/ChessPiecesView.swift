@@ -8,8 +8,15 @@
 
 import SwiftUI
 
+// TODO: Replace find x, y in array with a dictionary with key (x, y)
+let getBoarderColor: (ChessBoard, Int, Int) -> Color = { (chessBoard, x, y) in
+    chessBoard.chessPieces.first(where: { chessPiece in
+        chessPiece.x == x && chessPiece.y == y
+    })?.selected ?? false ? .black : .clear
+}
+
 struct ChessPiecesView: View {
-    var chessBoard: ChessBoard
+    @EnvironmentObject var chessBoard: ChessBoard
     var cellWidth: CGFloat
 
     var body: some View {
@@ -20,13 +27,15 @@ struct ChessPiecesView: View {
                         ChessPieceView(chessPiece: self.chessBoard.chessPieces.first { chessPiece in
                             chessPiece.x == x && chessPiece.y == y
                         }, width: self.cellWidth)
+                            .border(getBoarderColor(self.chessBoard, x, y))
                             .tapAction {
-                                if let chessPiece = self.chessBoard.chessPieces.first(where: { chessPiece in
-                                    chessPiece.x == x && chessPiece.y == y
-                                }) {
-                                    print(chessPiece)
+                                self.chessBoard.chessPieces.enumerated().forEach { (idx, chessPiece) in
+                                    return chessPiece.x == x && chessPiece.y == y
+                                        ? self.chessBoard.chessPieces[idx].setSelected()
+                                        : self.chessBoard.chessPieces[idx].setUnselected()
                                 }
                             }
+                        
                     }
                 }
             }
@@ -37,7 +46,8 @@ struct ChessPiecesView: View {
 #if DEBUG
     struct ChessPiecesView_Previews: PreviewProvider {
         static var previews: some View {
-            ChessPiecesView(chessBoard: ChessBoard(), cellWidth: CGFloat(200))
+            ChessPiecesView(cellWidth: CGFloat(100))
+            .environmentObject(ChessBoard())
         }
     }
 #endif
