@@ -75,7 +75,9 @@ class ChessBoard: BindableObject {
     func movePiece(chessPiece: ChessPiece, cell: Cell) {
         let srcCoords = [chessPiece.x, chessPiece.y]
         let targetCoords = [cell.x, cell.y]
-        chessPieces[srcCoords]?.setPosition(cell: cell)
+        var chessPiece = chessPiece
+        print(chessPieces[srcCoords]!)
+        chessPiece.setPosition(cell: cell)
         chessPieces.removeValue(forKey: srcCoords)
         chessPieces[targetCoords] = chessPiece
     }
