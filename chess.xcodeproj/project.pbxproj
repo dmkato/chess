@@ -118,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				35E461FE22C94B8000A887DA /* Models */,
-				35E461F722C94B7500A887DA /* Types */,
 				35FF28B822C805CB00527F02 /* Views */,
 				35587EA422C7EB5A00D4F7F3 /* AppDelegate.swift */,
 				35587EA622C7EB5A00D4F7F3 /* SceneDelegate.swift */,
@@ -154,13 +153,6 @@
 				35587EC822C7EB5E00D4F7F3 /* Info.plist */,
 			);
 			path = chessUITests;
-			sourceTree = "<group>";
-		};
-		35E461F722C94B7500A887DA /* Types */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Types;
 			sourceTree = "<group>";
 		};
 		35E461FE22C94B8000A887DA /* Models */ = {

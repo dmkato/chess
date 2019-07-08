@@ -97,4 +97,10 @@ struct ChessPiece: Hashable {
     mutating func setUnselected() {
         selected = false
     }
+    
+    mutating func setPosition(cell: Cell) {
+        x = cell.x
+        y = cell.y
+        selected = false
+    }
 }

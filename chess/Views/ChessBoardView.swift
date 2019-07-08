@@ -19,7 +19,8 @@ struct ChessBoardView: View {
             Group {
                 GeometryReader { geometry in
                     ZStack {
-                        BoardCellsView(cellWidth: getCellWidth(geometry), cells: self.chessBoard.cells)
+                        BoardCellsView(cellWidth: getCellWidth(geometry))
+                            .environmentObject(self.chessBoard)
                         ChessPiecesView(cellWidth: getCellWidth(geometry))
                             .environmentObject(self.chessBoard)
                     }

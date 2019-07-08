@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-// TODO: Replace find x, y in array with a dictionary with key (x, y)
 let getBoarderColor: (ChessBoard, Int, Int) -> Color = { (chessBoard, x, y) in
     chessBoard.chessPieces[[x, y]]?.selected ?? false ? .blue : .clear
 }
@@ -20,16 +19,17 @@ struct ChessPiecesView: View {
     var cellWidth: CGFloat
 
     var body: some View {
-        VStack(alignment: .center) {
+        print(self.chessBoard.chessPieces.map {(key, chessPiece) in [chessPiece.x, chessPiece.y] })
+        return VStack(alignment: .center) {
             ForEach(0 ..< COLUMNS) { y in
                 HStack(alignment: .center) {
                     ForEach(0 ..< ROWS) { x in
+                        
                         ChessPieceView(chessPiece: self.chessBoard.chessPieces[[x, y]], width: self.cellWidth)
                             .border(getBoarderColor(self.chessBoard, x, y))
                             .tapAction {
                                 self.handleTap(x: x, y: y)
                             }
-                        
                     }
                 }
             }
@@ -39,11 +39,14 @@ struct ChessPiecesView: View {
     func handleTap(x: Int, y: Int) {
         if [x, y] == self.lastSelectedPieceIdxs {
             self.chessBoard.chessPieces[[x, y]]?.setUnselected()
+            self.chessBoard.setChessPieceUnselected()
             self.lastSelectedPieceIdxs = [9, 9]
+            self.pieceSelected = false
             return
         }
         self.chessBoard.chessPieces[[x, y]]?.setSelected()
         self.chessBoard.chessPieces[self.lastSelectedPieceIdxs]?.setUnselected()
+        self.chessBoard.setChessPieceSelected(x: x, y: y)
         self.lastSelectedPieceIdxs = [x, y]
         self.pieceSelected = true
     }

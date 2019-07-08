@@ -23,7 +23,7 @@ let createCells: ([[Int]: ChessPiece]) -> [[Cell]] = { chessPieces in
 }
 
 let createChessPieces: () -> [[Int]: ChessPiece] = {
-    Array(0 ..< ROWS)
+    Array([0,1,6,7])
         .flatMap { y in
             Array(0 ..< COLUMNS).map { x in
                 ChessPiece(x: x, y: y)
@@ -37,22 +37,47 @@ let createChessPieces: () -> [[Int]: ChessPiece] = {
 }
 
 class ChessBoard: BindableObject {
-    var didChange = PassthroughSubject<Void, Never>()
+    var didChange: PassthroughSubject<ChessBoard, Never>
+    
+    var selectedChessPiece: ChessPiece? {
+        didSet {
+            didChange.send(self)
+        }
+    }
 
     var cells: [[Cell]] {
         didSet {
-            didChange.send(())
+            didChange.send(self)
         }
     }
     
     var chessPieces: [[Int]: ChessPiece] {
         didSet {
-            didChange.send(())
+            didChange.send(self)
         }
     }
 
     init() {
+        self.didChange = PassthroughSubject<ChessBoard, Never>()
         self.chessPieces = createChessPieces()
         self.cells = createCells(self.chessPieces)
+        self.selectedChessPiece = nil
     }
+    
+    func setChessPieceSelected(x: Int, y: Int) {
+        selectedChessPiece = self.chessPieces[[x, y]]
+    }
+    
+    func setChessPieceUnselected() {
+        selectedChessPiece = nil
+    }
+    
+    func movePiece(chessPiece: ChessPiece, cell: Cell) {
+        let srcCoords = [chessPiece.x, chessPiece.y]
+        let targetCoords = [cell.x, cell.y]
+        chessPieces[srcCoords]?.setPosition(cell: cell)
+        chessPieces.removeValue(forKey: srcCoords)
+        chessPieces[targetCoords] = chessPiece
+    }
+    
 }
