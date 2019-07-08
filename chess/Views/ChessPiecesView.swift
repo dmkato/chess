@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-let getBoarderColor: (ChessBoard, Int, Int) -> Color = { (chessBoard, x, y) in
-    chessBoard.chessPieces[[x, y]]?.selected ?? false ? .blue : .clear
+let getBorderColor: (ChessBoard, Int, Int) -> Color = { (chessBoard, x, y) in
+    chessBoard.chessPieces[[x, y]] != nil && chessBoard.chessPieces[[x, y]] == chessBoard.selectedChessPiece ? .blue : .clear
 }
 
 struct ChessPiecesView: View {
     @EnvironmentObject var chessBoard: ChessBoard
     @State var pieceSelected = false
-    @State var lastSelectedPieceIdxs = [9, 9]
+    @State var lastSelectedPieceIdxs: [Int]? = nil
     var cellWidth: CGFloat
 
     var body: some View {
@@ -24,9 +24,8 @@ struct ChessPiecesView: View {
             ForEach(0 ..< COLUMNS) { y in
                 HStack(alignment: .center) {
                     ForEach(0 ..< ROWS) { x in
-                        
                         ChessPieceView(chessPiece: self.chessBoard.chessPieces[[x, y]], width: self.cellWidth)
-                            .border(getBoarderColor(self.chessBoard, x, y))
+                            .border(getBorderColor(self.chessBoard, x, y))
                             .tapAction {
                                 self.handleTap(x: x, y: y)
                             }
@@ -37,7 +36,7 @@ struct ChessPiecesView: View {
     }
     
     func handleTap(x: Int, y: Int) {
-        if [x, y] == self.lastSelectedPieceIdxs {
+        if self.lastSelectedPieceIdxs != nil && self.lastSelectedPieceIdxs == [x, y] {
             self.chessBoard.chessPieces[[x, y]]?.setUnselected()
             self.chessBoard.setChessPieceUnselected()
             self.lastSelectedPieceIdxs = [9, 9]
@@ -45,7 +44,8 @@ struct ChessPiecesView: View {
             return
         }
         self.chessBoard.chessPieces[[x, y]]?.setSelected()
-        self.chessBoard.chessPieces[self.lastSelectedPieceIdxs]?.setUnselected()
+        if self.lastSelectedPieceIdxs != nil { self.chessBoard.chessPieces[self.lastSelectedPieceIdxs!]?.setUnselected()
+        }
         self.chessBoard.setChessPieceSelected(x: x, y: y)
         self.lastSelectedPieceIdxs = [x, y]
         self.pieceSelected = true

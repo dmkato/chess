@@ -13,7 +13,6 @@ let getWidth: (CGFloat) -> CGFloat = { width in
 }
 
 struct ChessPieceView: View {
-    @State var border: Color = .clear
     let chessPiece: ChessPiece?
     let width: CGFloat
 
@@ -23,7 +22,6 @@ struct ChessPieceView: View {
                 Image(chessPiece!.imageName!)
                     .resizable()
                     .frame(width: getWidth(width), height: getWidth(width))
-                    .border(self.border, width: 5)
                     .shadow(radius: 7)
             } else {
                 Rectangle()
